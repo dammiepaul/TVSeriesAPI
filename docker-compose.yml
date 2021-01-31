@@ -1,0 +1,18 @@
+﻿version: '3'
+services:
+  tv-series-api:
+   build: .
+   environment:
+    DBServer: "ms-sql-server"
+   depends_on:
+    - ms-sql-server
+   ports:
+    - "8080:80"
+  ms-sql-server:
+   image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+   environment:
+    ACCEPT_EULA: "Y"
+    SA_PASSWORD: "Pa55w0rd2021"
+    MSSQL_PID: "Express"
+   ports:
+    - "1433:1433" 
